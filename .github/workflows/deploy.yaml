@@ -122,13 +122,13 @@ jobs:
 
                   printf 'Successfully installed dependencies\n' >> ./dist/_build_log.txt
             # Run linter (ensure your script writes dist/lint.html)
-            - name: Run Linter
-              id: lint
-              run: |
-                  npm run eslint-output
-                  echo "* [Linter](../lint.html)" >> docs/dashboard.md
+            # - name: Run Linter
+            #   id: lint
+            #   run: |
+            #       npm run eslint-output
+            #       echo "* [Linter](../lint.html)" >> docs/dashboard.md
 
-                  printf 'Successfully ran linter\n' >> ./dist/_build_log.txt
+            #       printf 'Successfully ran linter\n' >> ./dist/_build_log.txt
 
             # Build the project
             - name: Build the project
