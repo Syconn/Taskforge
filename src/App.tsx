@@ -1,11 +1,9 @@
-import './App.css'
+import DashboardPage from './page/DashboardPage'
 
 function App() {
 
   	return (
-		<>
-
-		</>
+		<DashboardPage />
 	)
 }
 

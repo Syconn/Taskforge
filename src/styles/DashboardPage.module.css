@@ -1,0 +1,247 @@
+.dashShell {
+  --bg: #131419;
+  --bg-soft: #1a1c24;
+  --bg-panel: #0f1118;
+  --line: #272b36;
+  --text: #e5e9f0;
+  --muted: #9da5b8;
+  --blue: #4f8ef7;
+
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 95% 0%, #232841 0%, transparent 28%),
+    radial-gradient(circle at 10% 100%, #1f2a38 0%, transparent 40%),
+    var(--bg);
+}
+
+.dashSidebar {
+  border-right: 1px solid var(--line);
+  padding: 1.5rem 1rem;
+  background: linear-gradient(180deg, #141722 0%, #11141c 100%);
+}
+
+.brand {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+.dashSidebar nav {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.sideLink {
+  border: none;
+  color: var(--muted);
+  background: transparent;
+  border-radius: 10px;
+  text-align: left;
+  padding: 0.7rem 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.active,
+.sideLink:hover {
+  background: #1f2d47;
+  color: #cae0ff;
+}
+
+.workspaceBlock {
+  margin-top: 2rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.workspaceBlock small {
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  font-size: 0.68rem;
+}
+
+.dashContent {
+  padding: 1rem 2rem 2.25rem;
+}
+
+.dashTopbar {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding-bottom: 1rem;
+}
+
+.dashTopbar input {
+  flex: 1;
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 0.96rem;
+  padding: 0.7rem 0.95rem;
+}
+
+.createBtn {
+  border: none;
+  background: var(--blue);
+  color: #eef3ff;
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.contentBlock {
+  margin-top: 1.8rem;
+}
+
+.contentBlock h2 {
+  font-size: 1.45rem;
+  margin: 0 0 1rem;
+}
+
+.boardGrid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+}
+
+.boardCard {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 110px;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.boardCard:hover {
+  transform: translateY(-2px);
+  border-color: #34435f;
+}
+
+.boardStrip {
+  position: relative;
+  height: 66px;
+}
+
+.red {
+  background: linear-gradient(135deg, #672013 0%, #b63119 95%);
+}
+
+.blue {
+  background: linear-gradient(135deg, #1b52a4 0%, #2ca8da 95%);
+}
+
+.violet {
+  background: linear-gradient(135deg, #35408b 0%, #be4d87 95%);
+}
+
+.slate {
+  background: linear-gradient(135deg, #4b5c82 0%, #243f69 95%);
+}
+
+.neutral {
+  background: linear-gradient(135deg, #2a2e36 0%, #343944 95%);
+}
+
+.starBtn {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(16, 20, 30, 0.48);
+  color: #ecf1ff;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.boardMeta {
+  padding: 0.75rem 0.75rem 0.85rem;
+}
+
+.boardMeta h3 {
+  margin: 0;
+  font-size: 1.04rem;
+  line-height: 1.35;
+}
+
+.boardMeta p {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+}
+
+.workspaceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.workspaceActions {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.workspaceActions button {
+  border: 1px solid var(--line);
+  background: #202531;
+  color: #ced6e8;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.38rem 0.7rem;
+}
+
+.createCard {
+  margin-top: 0.8rem;
+  max-width: 300px;
+  cursor: pointer;
+}
+
+.createCard:focus-visible {
+  outline: 2px solid #4f8ef7;
+  outline-offset: 2px;
+}
+
+@media (max-width: 1100px) {
+  .boardGrid {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .dashShell {
+    grid-template-columns: 1fr;
+  }
+
+  .dashSidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .dashContent {
+    padding: 1rem;
+  }
+
+  .contentBlock h2 {
+    font-size: 1.22rem;
+  }
+
+  .boardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .workspaceHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
