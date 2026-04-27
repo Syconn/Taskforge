@@ -186,21 +186,6 @@
   margin-bottom: 1rem;
 }
 
-.workspaceActions {
-  display: flex;
-  gap: 0.45rem;
-  flex-wrap: wrap;
-}
-
-.workspaceActions button {
-  border: 1px solid var(--line);
-  background: #202531;
-  color: #ced6e8;
-  border-radius: 8px;
-  font-weight: 600;
-  padding: 0.38rem 0.7rem;
-}
-
 .createCard {
   margin-top: 0.8rem;
   max-width: 300px;

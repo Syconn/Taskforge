@@ -1,54 +1,22 @@
+import BoardCard from '../components/BoardCard'
 import styles from '../styles/DashboardPage.module.css'
+import type { Board } from '../util/data'
 
-type BoardCard = {
-    id: number
-    title: string
-    subtitle?: string
-    tone: 'red' | 'blue' | 'violet' | 'slate'
-}
-
-const starredBoards: BoardCard[] = [
-    { id: 1, title: 'Syconn Super Hero Mod', tone: 'red' },
-    { id: 2, title: 'Spaceward Expansion', subtitle: 'Development', tone: 'blue' },
-    { id: 3, title: 'Survivor Game', tone: 'violet' },
-    { id: 4, title: "Syconn's Star Wars Mod", subtitle: 'RoadMap', tone: 'slate' },
-]
-
-const recentlyViewed: BoardCard[] = [
-    { id: 5, title: "Syconn's Star Wars Mod", subtitle: 'RoadMap', tone: 'slate' },
-    { id: 6, title: 'Spaceward Expansion', subtitle: 'Development', tone: 'blue' },
-    { id: 7, title: 'Syconn Super Hero Mod', tone: 'red' },
-    { id: 8, title: 'Survivor Game', tone: 'violet' },
-]
-
-const workspaceBoards: BoardCard[] = [
-    { id: 9, title: 'Spaceward Expansion', subtitle: 'Development', tone: 'blue' },
-    { id: 10, title: 'Survivor Game', tone: 'violet' },
-    { id: 11, title: 'Syconn Super Hero Mod', tone: 'red' },
-    { id: 12, title: "Syconn's Star Wars Mod", subtitle: 'RoadMap', tone: 'slate' },
-]
-
-function BoardGrid({ boards }: { boards: BoardCard[] }) {
+function BoardGrid({ boards }: { boards: Board[] }) {
     return (
         <div className={styles.boardGrid} role="list">
-            {boards.map((board) => (
-                <article key={board.id} className={styles.boardCard} role="listitem">
-                    <div className={`${styles.boardStrip} ${styles[board.tone]}`}>
-                        <button className={styles.starBtn} aria-label={`Star ${board.title}`}>
-                            ★
-                        </button>
-                    </div>
-                    <div className={styles.boardMeta}>
-                        <h3>{board.title}</h3>
-                        {board.subtitle ? <p>{board.subtitle}</p> : null}
-                    </div>
-                </article>
+            {boards.map((board, index) => (
+                <BoardCard key={index} board={board} />
             ))}
         </div>
     )
 }
 
 function DashboardPage() {
+    const starredBoards: Board[] = [{title: "test", favorite: false, tone: "blue"}]
+    const recentlyViewed: Board[] = []
+    const workspaceBoards: Board[] = []
+
     return (
         <main className={styles.dashShell}>
             <aside className={styles.dashSidebar}>
@@ -81,11 +49,6 @@ function DashboardPage() {
                 <section className={styles.contentBlock}>
                     <div className={styles.workspaceHeader}>
                         <h2>Your Workspaces</h2>
-                        <div className={styles.workspaceActions}>
-                            <button>Boards</button>
-                            <button>Members</button>
-                            <button>Settings</button>
-                        </div>
                     </div>
 
                     <BoardGrid boards={workspaceBoards} />
@@ -94,7 +57,7 @@ function DashboardPage() {
                         <div className={`${styles.boardStrip} ${styles.neutral}`} />
                         <div className={styles.boardMeta}>
                             <h3>Create new board</h3>
-                            <p>6 remaining</p>
+                            <p>{workspaceBoards.length} boards created</p>
                         </div>
                     </article>
                 </section>
