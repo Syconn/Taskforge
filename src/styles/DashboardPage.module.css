@@ -85,6 +85,10 @@
   padding: 0.7rem 0.95rem;
 }
 
+.newBoardInput {
+  flex: 0 1 240px;
+}
+
 .createBtn {
   border: none;
   background: var(--blue);

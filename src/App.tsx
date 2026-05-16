@@ -1,4 +1,5 @@
 import DashboardPage from './page/DashboardPage';
+import "./App.css"
 
 function App() {
 	return (

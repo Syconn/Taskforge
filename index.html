@@ -2,13 +2,19 @@
 <html>
 
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8" http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data:;
+    connect-src 'self';
+  " />
   <title>Taskforge</title>
 </head>
 
 <body>
   <div id="root"></div>
-  <script type="module" src="/src/renderer.tsx"></script>
+  <script type="module" src="/src/electron/renderer.tsx"></script>
 </body>
 
 </html>

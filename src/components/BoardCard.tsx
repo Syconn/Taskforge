@@ -2,7 +2,6 @@ import styles from '../styles/DashboardPage.module.css'
 import type { Board } from '../util/data'
 
 function BoardCard({ board }: { board: Board }) {
-
     return (
         <article className={styles.boardCard} role="listitem">
             <div className={`${styles.boardStrip} ${styles[board.tone]}`}>

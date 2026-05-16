@@ -1,3 +1,3 @@
 # TaskForge
 
-This is a react + ts + vite Trello Clone with in built github support and integration
+This is a electron + react + ts + vite Trello Clone with in built github support and integration

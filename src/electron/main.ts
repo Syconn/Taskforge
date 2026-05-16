@@ -1,6 +1,8 @@
-import { app, BrowserWindow } from 'electron';
-import path from 'node:path';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import started from 'electron-squirrel-startup';
+import path from 'node:path';
+import { BoardService } from '../service/board.service';
+import { initDatabase } from '../db/bootstrap';
 
 if (started) {
     app.quit();
@@ -23,6 +25,8 @@ const createWindow = () => {
             path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`),
         );
     }
+
+    mainWindow.webContents.openDevTools();
 };
 
 app.on('ready', createWindow);
@@ -38,3 +42,26 @@ app.on('activate', () => {
         createWindow();
     }
 });
+
+// Services
+app.whenReady().then(async () => {
+    await initDatabase();
+
+    const boardData = new BoardService();
+
+    ipcMain.handle("board:create", (_, data) => {
+        return boardData.create(data);
+    });
+
+    ipcMain.handle("board:update", (_, id, data) => {
+        return boardData.update(id, data);
+    });
+
+    ipcMain.handle("board:delete", (_, id) => {
+        return boardData.delete(id);
+    });
+
+    ipcMain.handle("board:getAll", () => {
+        return boardData.getAll();
+    });
+})

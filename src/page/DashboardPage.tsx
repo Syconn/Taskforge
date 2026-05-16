@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import BoardCard from '../components/BoardCard'
 import styles from '../styles/DashboardPage.module.css'
 import type { Board } from '../util/data'
@@ -13,9 +14,30 @@ function BoardGrid({ boards }: { boards: Board[] }) {
 }
 
 function DashboardPage() {
-    const starredBoards: Board[] = [{title: "test", favorite: false, tone: "blue"}]
+    const starredBoards: Board[] = [{ id: window.api.createId(), title: "test", favorite: false, tone: "blue" }]
     const recentlyViewed: Board[] = []
     const workspaceBoards: Board[] = []
+
+    useEffect(() => {
+        async function test() {
+            console.log("Testing boards API...");
+
+            const all = window.boards.getAll();
+            console.log("GET ALL:", all);
+
+            window.boards.create({
+                id: crypto.randomUUID(),
+                title: "Test Board",
+                favorite: false,
+                tone: "red"
+            });
+
+            const afterCreate = window.boards.getAll();
+            console.log("AFTER CREATE:", afterCreate);
+        }
+
+        test();
+    }, []);
 
     return (
         <main className={styles.dashShell}>
